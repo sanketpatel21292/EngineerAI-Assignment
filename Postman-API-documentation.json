@@ -1,0 +1,115 @@
+{
+	"variables": [],
+	"info": {
+		"name": "EngineerAI",
+		"_postman_id": "c5b515a1-8534-9b8d-a30a-610db3ab3541",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add User",
+			"request": {
+				"url": "http://localhost:3000/api/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\":\"sanket\",\n\t\"lastName\":\"patel\",\n\t\"email\":\"sanket.patel@it.com\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"url": {
+					"raw": "http://localhost:3000/api/users?page=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"url": "http://localhost:3000/api/user/5ece3052a2a8064ce8497c76",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Udpate User By Id",
+			"request": {
+				"url": "http://localhost:3000/api/user/5ece3052a2a8064ce8497c76",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"marie\",\n\t\"lastName\":\"curie\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User By Id",
+			"request": {
+				"url": "http://localhost:3000/api/user/5ece325533509368a4c4b814",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Typeahead",
+			"request": {
+				"url": "http://localhost:3000/api/typeahead/com",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
