@@ -26,7 +26,7 @@ router.get('/users', async (req, res) => {
         let page = 1;
         if (req.query.page && Number.isInteger(parseInt(req.query.page))) page = req.query.page;
 
-        const users = await User.find({}, {}, {
+        const users = await User.find({}, ['firstName', 'lastName', 'email'], {
             limit: 3,
             skip: (parseInt(page) - 1) * 3
         });
@@ -40,7 +40,7 @@ router.get('/users', async (req, res) => {
 // Get User By Id
 router.get('/user/:id', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.id).select(['firstName', 'lastName', 'email']);
 
         if (!user) {
             return res.status(404).send('User not found!');
@@ -91,7 +91,7 @@ router.get('/typeahead/:input', async (req, res) => {
                 { lastName: { $regex: '.*' + req.params.input + '.*' } },
                 { email: { $regex: '.*' + req.params.input + '.*' } }
             ]
-        });
+        }).select(['firstName', 'lastName', 'email']);
 
         res.send(users);
     } catch (e) {
